@@ -10,9 +10,6 @@ options.forEach(element => {
     }
 })
 
-select.onchange = (e) =>{
-    console.log(e.target.value)
-}
 let theMain = {
     x:getAtr(mainCity,0) || 55.7522,
     y:getAtr(mainCity,1) || 37.6156,
@@ -29,7 +26,6 @@ function init(){
     myMap.behaviors.disable('scrollZoom'); 
     select.onchange = (e) =>{
         myMap.destroy();
-        console.log(e.target.children)
         for (let index = 0; index < e.target.children.length; index++) {
             e.target.children[index].removeAttribute('selected')
             
