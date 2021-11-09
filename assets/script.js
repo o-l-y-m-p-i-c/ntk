@@ -219,7 +219,6 @@ submitForm.onclick = (event) =>{
                 }else if(form.elements[i].name == "file") {
                     messageMake(messageA,form.elements[i].name, form.elements[i].files)
                 }else{
-                    console.log(form.elements[i].name)
                     errMes = true
                 }
 
