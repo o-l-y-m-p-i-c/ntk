@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
     <title>NTK_TEST</title>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript"></script>
+    <style>
+        
+    </style>
 </head>
 <body>
     <section class="form-section">
@@ -19,21 +22,8 @@
                 
                 <p class="form__city-p">
                     Постройте своё будущее c РусЭлитТрейдинг в городе 
-                    <span class="form-header__select-wrapper">
-                        <select class="form-header__select-city" id="city-select" name="city" required>
-                            <option value="Москва" class="city-coords" coordinates=" 55.7522,37.6156" zoom="15.5"   >
-                                Москва
-                            </option>
-                            <option value="Краснодар"  class="city-coords" coordinates=" 45.0448, 38.976" zoom="15.5"  >
-                                Краснодар
-                            </option>
-                            <option value="Казань" class="city-coords" coordinates=" 55.7887, 49.1221" zoom="15.5">
-                                Казань
-                            </option>
-                            <option value="Нижний Новгород" class="city-coords" coordinates=" 56.2973, 43.946" zoom="15.5" selected >
-                                Нижний Новгород
-                            </option>
-                        </select>
+                    <span class="form-header__select-wrapper" style="display: none;">
+                        
                         <label class="form-header__select-city-label" for="city-select"></label>
                         <span class="rere"  style="
                             position: absolute;
@@ -47,6 +37,26 @@
                             </svg>
                         </span>
                     </span>
+                    <div class="city-wrap">
+                        
+                        <article class="main-city" value="Нижний Новгород" class="city-coords" coordinates=" " zoom="">
+                            
+                        </article>
+                        <span class="select-arrow">
+                            <svg width="18"   height="10" style="fill:transparent;">
+                                <use xlink:href="#arrowRed"></use>
+                            </svg>
+                        </span>
+                        <ul class="city-list">
+                            <li value="Москва" class="city-coords" coordinates=" 55.7522,37.6156" zoom="15.5">Москва</li>
+                            <li value="Краснодар" class="city-coords" coordinates=" 45.0448, 38.976" zoom="15.5">Краснодар</li>
+                            <li value="Казань" class="city-coords" coordinates=" 55.7887, 49.1221" zoom="15.5">Казань                            </li>
+                            <li value="Нижний Новгород" class="city-coords" coordinates=" 56.2973, 43.946" zoom="15.5" selected>Нижний Новгород</li>
+                        </ul>
+                        
+                        
+                        
+                    </div>
                 </p>
             </div>
             <div class="form-inner">
@@ -81,7 +91,7 @@
                         Ваш E-mail</label>
                     </div>
                     <div class="form-inner__left-side__select-wrapper">
-                        <select 
+                        <!-- <select 
                             class="form-inner__left-side__select" 
                             name="vacancy" 
                             id="select-vacancy"
@@ -131,12 +141,27 @@
                             for="select-vacancy"
                             class="input-wrapper"    
                         >
-                        </label>
-                        <span class="form-inner__left-side__select-span">
-                            <svg width="18"   height="10" style="fill:transparent;">
-                                <use xlink:href="#arrowBlack"></use>
-                            </svg>
-                        </span>
+                        </label> -->
+                        
+                        
+                        <article class="vacancy-select">
+                            <span class="vacancy-chosen">
+                                 Выберите вакансию 
+                            </span>
+                            <span class="form-inner__left-side__select-span">
+                                <svg width="18"   height="10" style="fill:transparent;">
+                                    <use xlink:href="#arrowBlack"></use>
+                                </svg>
+                            </span>
+                        </article>
+                        
+                        <ul class="vacancy-list">
+                            <li class="vacancy-item">Программист</li>
+                            <li class="vacancy-item">Верстальщик</li>
+                            <li class="vacancy-item">Аналитик</li>
+                            <li class="vacancy-item">SEO специалист</li>
+                            <li class="vacancy-item">Контент менеджер</li>
+                        </ul>
                     </div>
                     <div class="form-inner__left-side__textarea-wrapper ">
                         <textarea name="about"  id="about" required></textarea>

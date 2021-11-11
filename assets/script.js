@@ -1,13 +1,51 @@
 let mainCity, 
     mainCityZoom,
-    select = document.querySelector('.form-header__select-city'),
-    options = document.querySelectorAll('.form-header__select-city option')
+    select = document.querySelector('.main-city'),
+    options = document.querySelectorAll('.city-coords')  
 
-options.forEach(element => {
-    if (element.value === select.value) {
-        mainCity = element.attributes.coordinates.value.split(',')
-        mainCityZoom = element.attributes.zoom.value
+let vacancyChoose = document.querySelectorAll(".vacancy-item"),
+    vacancyTitle = document.querySelector(".vacancy-select"),
+    vacancyList = document.querySelector(".vacancy-list"),
+    vacancySelect = document.querySelector(".form-inner__left-side__select-wrapper")
+
+
+vacancyTitle.onclick = (e)=> {
+    vacancySelect.classList.toggle("active")
+}
+vacancyChoose.forEach(el => {
+    el.onclick = (e)=> {
+        vacancyTitle.setAttribute('chosen',e.target.innerHTML)
+        vacancyTitle.children[0].innerText = e.target.innerHTML
+        vacancySelect.classList.remove("active")
+
     }
+    
+})
+
+select.onclick= (e)=>{
+    e.target.parentNode.classList.toggle("active")
+}
+
+function setOption(){
+    options.forEach(element => {
+        if (element.hasAttribute("selected")) {
+            mainCity = element.attributes.coordinates.value.split(',')
+            mainCityZoom = element.attributes.zoom.value
+        }
+        
+    })
+}
+
+options.forEach(el => {
+    if (el.hasAttribute("selected")) {
+        mainCity = el.attributes.coordinates.value.split(',')
+        mainCityZoom = el.attributes.zoom.value
+        select.value= el.innerText
+        select.innerText= el.innerText
+        select.attributes.coordinates.value = el.attributes.coordinates.value
+        setOption()
+    }
+    
 })
 
 let theMain = {
@@ -30,7 +68,6 @@ function init(){
             e.target.children[index].removeAttribute('selected')
             
         }
-        
         let item = e.target.selectedOptions[0]
         item.setAttribute('selected','')
         let newCoords = item.attributes.coordinates.value.split(',')
@@ -40,6 +77,31 @@ function init(){
         theMain.zoom = newZoom || theMain.zoom
         ymaps.ready(init);
     }
+
+    options.forEach(el=>{
+        el.onclick = (e)=>{
+            e.target.parentNode.parentNode.classList.toggle("active")
+            select.value= e.target.innerText
+            select.innerText= e.target.innerText
+            select.attributes.coordinates.value = e.target.attributes.coordinates.value
+            select.attributes.zoom.value = e.target.attributes.zoom.value
+            myMap.destroy();
+            for (let index = 0; index < options.length; index++) {
+                options[index].removeAttribute('selected')  
+            }
+            let item = e.target
+            mainCityZoom = item.attributes.zoom.value
+            item.setAttribute('selected','')
+            setOption()
+            theMain.x = getAtr(mainCity,0)
+            theMain.y = getAtr(mainCity,1)
+            theMain.zoom = mainCityZoom || theMain.zoom
+            ymaps.ready(init);
+        }
+    })
+    
+
+
     var NN = new ymaps.Placemark([56.2973,43.946], {   
         iconContent: '<div class="file-wrap">Комсомольская площадь, 2</div>',
     }, {
@@ -139,6 +201,7 @@ fileState.childTakeFile.addEventListener("change", (e)=>{
     }
 })
 function deleteItem(e){
+    
     let firstPromise = new Promise((resolve, reject) =>{
         let itemTitles = e.parentNode.childNodes[0].innerHTML
         let itemParent = e.parentNode
@@ -149,7 +212,7 @@ function deleteItem(e){
                 if (item.name !== itemTitles) {
                     fileState.newFileMass.push(item)
                 }
-                if (array.length - 1 === index) {
+                if (index == array.length - 1) {
                     return true
                 }
             })
@@ -169,10 +232,11 @@ function deleteItem(e){
     firstPromise.then(
         resolve => {
             fileState.childTakeFile.files = new FileListItems(fileState.newFileMass)
+            fileState.fileMass = fileState.newFileMass
+            fileState.newFileMass = []
             e.parentNode.remove()
         }
     )
-    
 }
 function FileListItems (files) {
     var b = new ClipboardEvent("").clipboardData || new DataTransfer()
@@ -183,6 +247,9 @@ function FileListItems (files) {
 }
 
 function getAtr (arr=null , atr=0) {
+    if(arr == null ) {
+        return false
+    }
     return arr[atr]
 }
 

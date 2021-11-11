@@ -28,6 +28,8 @@ h1,h2,h3,h4,h5,p,dd,dl{
     font-weight: var(--font-weight-medium);
 }
 .form__city-p{
+    margin-right: 8px;
+    display: inline-block;
     line-height: 180%;
     padding-top: 8px;
     font-weight: var(--font-weight-regular);
@@ -207,6 +209,7 @@ option:hover {
     -webkit-appearance: none;
     min-width: 100%;
     width: 100%;
+    height: 150px;
     resize: none;
     outline: none;
     border: none;
@@ -265,8 +268,8 @@ option:hover {
 .form-inner__left-side__select-wrapper .form-inner__left-side__select-span{
     position: absolute;
     right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
 }
 .form-inner__left-side__select{
     appearance: none;
@@ -430,12 +433,163 @@ option:hover {
 .form-submit:hover{
     background-color:#96191d;
 }
+.city-wrap{
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+}
+.city-wrap .city-list{
+    display: none;
+    position:absolute;
+    left: -32px;
+    top: calc(100% - 2px);
+    min-width: 100%;
+    width: max-content;
+    max-width: 90vw;
+    padding:24px 32px;
+    /* box-sizing: border-box; */
+    background-color: #fff;
+    z-index: 3;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.05);
+}
+.city-wrap .city-list .city-coords{
+    list-style: none;
+    cursor: pointer;
+    margin-top: 16px;
+}
+.city-wrap .city-list .city-coords:first-child{
+    margin-top: 0;
+}
+.city-wrap .city-list .city-coords[selected]{
+    font-weight: var(--font-weight-medium);
+}
+.city-wrap .city-list .city-coords{
+    font-weight: var(--font-weight-regular);
+
+}
+.city-wrap .city-list .city-coords:hover{
+    color:#D3232A
+}
+.city-wrap.active .city-list{
+    display: block;
+}
+.main-city{
+    cursor: pointer;
+    display:inline-block;
+    padding-right: 11px;
+    color:#D3232A;
+    font-size: 24px;
+    line-height: 180%;
+    position: relative;
+}
+.vacancy-chosen{
+    font-family: "Montserrat";
+    font-size:24px;
+    color:#737373
+}
+.vacancy-select[chosen] .vacancy-chosen{
+    color: #000
+}
+.main-city:after{
+    content: '';
+    position: absolute;
+    width: 100%;opacity: 0.2;
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px dashed #D3232A;
+}
+.select-arrow svg{
+    transform:scale(1,1);
+    transition:transform 0.1s ease-out;
+}
+.active .select-arrow svg{
+    transform:scale(1,-1);
+    transition:transform 0.1s ease-out;
+}
+.vacancy-list{
+    display: none;
+    position:absolute;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    background-color: #fff;
+    z-index: 3;box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.05);
+    padding: 24px 32px;box-sizing: border-box;
+}
+.vacancy-select{
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 24px 0px;
+    cursor: pointer;
+}
+.vacancy-select::before{
+    content:"";
+    position: absolute;
+    left: 0%;
+    bottom: 0px;
+    width: 100%;border-bottom: 2px solid#F4F5F7;
+}
+.vacancy-select:after{
+    content:"";
+    position: absolute;
+    left: -150%;
+    bottom: 0px;
+    width: 100%;border-bottom: 2px solid #D3232A;
+    transform:left 0.5s ease-out
+}
+.active .vacancy-select:after{
+    left: 0%;
+    transform:left 0.5s ease-out
+}
+.form-inner__left-side__select-span{
+    transition: 0.3s transform ease-out;
+}
+.active .form-inner__left-side__select-span{
+    transform: scale(1,-1);
+    transition: 0.3s transform ease-out;
+}
+.vacancy-list .vacancy-item{
+    list-style: none;
+    margin-top: 16px;
+}
+.vacancy-list .vacancy-item:hover{
+    color:#D3232A;
+    cursor: pointer;
+}
+.vacancy-list .vacancy-item:first-child{
+    margin-top: 0;
+}
+.active .vacancy-list{
+    display: block;
+}
 @media screen and (max-width:800px) {
     .form{
         padding:29px 20px
     }
     .column{
         flex-basis: 100%;
+    }
+    .form-inner__input-text:first-child{
+        margin-top: 0;
+    }
+    .form-inner__right-side__contacts .row{
+        font-size:12px
+    }
+    .form-inner__right-side__contacts-title,.input-wrapper,.vacancy-chosen{
+        font-size:20px
+    }
+    .form-inner__right-side__contacts .row .phone-link{
+        font-size:24px
+    }
+    .form-inner__right-side__contacts .row .email-link{
+        font-size:20px
+    }
+    .form-inner__left-side__textarea-wrapper textarea{
+        height:130px
+    }
+    .form-inner__input-text input[type="text"], .form-inner__left-side__textarea-wrapper textarea{
+        font-size:20px
     }
 }
 
