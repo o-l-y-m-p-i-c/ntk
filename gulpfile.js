@@ -47,7 +47,7 @@ function scripts() {
     ])
     .pipe(concat('main.min.js'))
     .pipe(uglify())
-    .pipe(dest('dist/js'))
+    .pipe(dest('app/js'))
     .pipe(browserSync.stream())
 }
 function styles() {
@@ -60,7 +60,7 @@ function styles() {
             overrideBrowserslist: ['last 10 version'],
             grid: true
         }))
-        .pipe(dest('dist/css'))
+        .pipe(dest('app/css'))
         .pipe(browserSync.stream())
 }
 function build() {
