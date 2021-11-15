@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <title>NTK_TEST</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript"></script>
+</head>
+<body>
+    <section class="form-section">
+        <form class="form">
+            <div class="form-header">
+                <h2 class="form__title">
+                    Отправьте ваше резюме
+                </h2>
+                
+                <p class="form__city-p">
+                    Постройте своё будущее c РусЭлитТрейдинг в городе 
+                    <span class="form-header__select-wrapper" style="display: none;">
+                        
+                        <label class="form-header__select-city-label" for="city-select"></label>
+                        <span class="rere"  style="
+                            position: absolute;
+                            right: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            pointer-events: none;
+                        ">
+                            <svg width="18"   height="10" style="fill:transparent;">
+                                <use xlink:href="#arrowRed"></use>
+                            </svg>
+                        </span>
+                    </span>
+                    <div class="city-wrap">
+                        
+                        <article class="main-city" value="Нижний Новгород" class="city-coords" coordinates=" " zoom="">
+                            
+                        </article>
+                        <span class="select-arrow">
+                            <svg width="18"   height="10" style="fill:transparent;">
+                                <use xlink:href="#arrowRed"></use>
+                            </svg>
+                        </span>
+                        <ul class="city-list">
+                            <li value="Москва" class="city-coords" coordinates=" 55.7522,37.6156" zoom="15.5">Москва</li>
+                            <li value="Краснодар" class="city-coords" coordinates=" 45.0448, 38.976" zoom="15.5">Краснодар</li>
+                            <li value="Казань" class="city-coords" coordinates=" 55.7887, 49.1221" zoom="15.5">Казань                            </li>
+                            <li value="Нижний Новгород" class="city-coords" coordinates=" 56.2973, 43.946" zoom="15.5" selected>Нижний Новгород</li>
+                        </ul>
+                        
+                        
+                        
+                    </div>
+                </p>
+            </div>
+            <div class="form-inner">
+                <div class="form-inner__left-side column">
+                    <div class="form-inner__input-text">
+                        <input 
+                            type="text" 
+                            name="name" 
+                            id="name"
+                            autocomplete="false"
+                            required
+                        > 
+                        <label 
+                            class="input-wrapper"
+                            for="name"
+                        >
+                            Как вас зовут?
+                        </label>
+                    </div>
+                    <div class="form-inner__input-text">
+                        <input 
+                            type="text" 
+                            name="email" 
+                            id="email"
+                            autocomplete="false"
+                            required
+                            > 
+                        <label 
+                            for="email"
+                            class="input-wrapper"    
+                        >
+                        Ваш E-mail</label>
+                    </div>
+                    <div class="form-inner__left-side__select-wrapper">
+                        <!-- <select 
+                            class="form-inner__left-side__select" 
+                            name="vacancy" 
+                            id="select-vacancy"
+                            required
+                                >
+                            <option 
+                                class="form-inner__left-side__select-option" 
+                                value="null" 
+                                selected 
+                                disabled
+                                hidden 
+                            >
+                                Выберите вакансию
+                            </option>
+                            <option 
+                                class="form-inner__left-side__select-option" 
+                                value="Программист"
+                            >
+                                Программист
+                            </option>
+                            <option 
+                                class="form-inner__left-side__select-option" 
+                                value="Верстальщик"
+                            >
+                                Верстальщик
+                            </option>
+                            <option 
+                                class="form-inner__left-side__select-option" 
+                                value="Аналитик"
+                            >
+                                Аналитик
+                            </option>
+                            <option 
+                                class="form-inner__left-side__select-option" 
+                                value="SEO специалист"
+                            >
+                                SEO специалист
+                            </option>
+                            <option 
+                                class="form-inner__left-side__select-option" 
+                                value="Контент менеджер"
+                            >
+                                Контент менеджер
+                            </option>
+                        </select>
+                        <label 
+                            for="select-vacancy"
+                            class="input-wrapper"    
+                        >
+                        </label> -->
+                        
+                        
+                        <article class="vacancy-select">
+                            <span class="vacancy-chosen">
+                                 Выберите вакансию 
+                            </span>
+                            <span class="form-inner__left-side__select-span">
+                                <svg width="18"   height="10" style="fill:transparent;">
+                                    <use xlink:href="#arrowBlack"></use>
+                                </svg>
+                            </span>
+                        </article>
+                        
+                        <ul class="vacancy-list">
+                            <li class="vacancy-item">Программист</li>
+                            <li class="vacancy-item">Верстальщик</li>
+                            <li class="vacancy-item">Аналитик</li>
+                            <li class="vacancy-item">SEO специалист</li>
+                            <li class="vacancy-item">Контент менеджер</li>
+                        </ul>
+                    </div>
+                    <div class="form-inner__left-side__textarea-wrapper ">
+                        <textarea name="about"  id="about" required></textarea>
+                        <label for="about" class="input-wrapper">
+                            Напишите о себе кратко
+                        </label>
+                    </div>
+                    <div class="form-inner__left-side__file-wrapper">
+                        <div class="">
+                            <label for="file" class="form-inner__left-side__file-label">
+                                <svg width="23" height="26">
+                                    <use xlink:href="#paperclip" ></use>
+                                </svg>
+                                <span>
+                                    Прикрепить файл
+                                </span>
+                            </label>
+                            <!-- input witch is taking/upload files -->
+                            <input type="file" id="file" name="file" class="form-inner__left-side__file" multiple >
+
+                        </div>
+                        
+                        <dl class="form-inner__left-side__file-list">
+                            
+                        </dl>
+                    </div>
+                    <div class="form-inner__left-side__checks">
+
+                        <label for="rights">
+                            <input class="form-inner__left-side__checks-input" name="agreement" type="checkbox" id="rights">
+                            <div class="checkbox-div" ></div>
+                            <span>
+                                Я соглашаюсь с
+                                <a href="#">
+                                    политикой конфиденциальности
+                                </a>
+                                нажимая на кнопку “Откликнуться”
+                            </span>
+                           
+                        </label>
+                    </div>
+                    <div class="form-inner__left-side__check-err">
+
+                    </div>
+                    <input class="form-submit" type="submit" name="submit" value="Откликнуться">
+                </div>
+                <div class="form-inner__right-side column">
+                    <div class="form-inner__right-side__contacts-wrapper">
+                        <div class="form-inner__right-side__contacts-map-wrapper "  >
+                            <div class="form-inner__right-side__contacts-map" >
+                                <div id="map">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-inner__right-side__contacts">
+                            <h3 class="form-inner__right-side__contacts-title">
+                                Контакты:
+                            </h3>
+                            <p class="row">
+                                <a href="tel:+74959297078" class="phone-link link">
+                                    +7 495 929-70-78
+                                </a>
+                            </p>
+                            <p class="row">
+                                <a href="#" class="email-link link">
+                                    welcome@ret-team.su
+                                </a>
+                            </p>
+                            <p class="row">
+                                Мы работаем в будни с 9:00 до 18:00. 
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <script src="./js/main.min.js"></script>
+</body>
+</html>
+
+<svg class="svg-sprite">
+    <symbol id="arrowBlack" viewBox="0 0 18 10">
+        <path d="M16.5 1L9 8.5L1.5 1" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="arrowRed" viewBox="0 0 18 10">
+        <path d="M16.5 1L9 8.5L1.5 1" stroke="#D3232A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="paperclip" viewBox="0 0 23 26" >
+        <path fill="transparent" d="M15.9993 6.99927L5.58579 17.5857C5.21071 17.9607 5 18.4694 5 18.9999C5 19.5303 5.21071 20.039 5.58579 20.4141C5.96086 20.7892 6.46957 20.9999 7 20.9999C7.53043 20.9999 8.03914 20.7892 8.41421 20.4141L20.8277 7.82769C21.1991 7.45626 21.4938 7.0153 21.6948 6.53C21.8958 6.0447 21.9993 5.52455 21.9993 4.99927C21.9993 4.47398 21.8958 3.95384 21.6948 3.46853C21.4938 2.98323 21.1991 2.54227 20.8277 2.17084C20.4563 1.79941 20.0153 1.50477 19.53 1.30375C19.0447 1.10273 18.5246 0.999268 17.9993 0.999268C17.474 0.999268 16.9538 1.10273 16.4685 1.30375C15.9832 1.50477 15.5423 1.79941 15.1708 2.17084L2.75736 14.7572C1.63214 15.8825 1 17.4086 1 18.9999C1 20.5912 1.63214 22.1173 2.75736 23.2425C3.88258 24.3677 5.4087 24.9999 7 24.9999C8.5913 24.9999 10.1174 24.3677 11.2426 23.2425L21.4993 12.9993" stroke="#D3232A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="point" viewBox="0 0 91 100">
+        <path d="M51.4977 91.4638C48.2572 93.4303 46.575 99.7891 46.575 99.7891C46.575 99.7891 45.7457 100.394 45.4919 99.5542C44.065 94.6755 40.8688 91.6294 40.8688 91.6294C17.914 89.303 0 69.7313 0 45.9269C0 20.5625 20.3665 0 45.4919 0C70.632 0 91 20.5625 91 45.9269C91 69.251 73.7987 88.5065 51.4977 91.4638Z" fill="black"/>
+        <path d="M32.8838 36V58H26.6751V49.42H18.2087V58H12V36H18.2087V44.2657H26.6751V36H32.8838Z" fill="white"/>
+        <path d="M59.9502 40.9343H48.5751V58H42.4604V40.9343H30.5529V36H59.9502V40.9343Z" fill="white"/>
+        <path d="M67.0216 49.5771H64.1995V58H58.0221V36H64.1995V44.5486H67.1784L72.415 36H78.9373L72.0701 46.6229L79 58H72.0074L67.0216 49.5771Z" fill="white"/>
+    </symbol>
+    <symbol id="trash" viewBox="0 0 24 25">
+        <path d="M20.2495 5.75L3.74951 5.75001" stroke="#D3232A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.25 2.75H15.75" stroke="#D3232A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18.75 5.75V20C18.75 20.1989 18.671 20.3897 18.5303 20.5303C18.3897 20.671 18.1989 20.75 18 20.75H6C5.80109 20.75 5.61032 20.671 5.46967 20.5303C5.32902 20.3897 5.25 20.1989 5.25 20V5.75" stroke="#D3232A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+</svg>
